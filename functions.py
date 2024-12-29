@@ -8,6 +8,7 @@ from tqdm import tqdm
 from scipy.ndimage import rotate
 import random
 from sys import maxsize as max_int
+from sklearn.preprocessing import LabelEncoder
 
 
 ### Constants ###
@@ -15,6 +16,22 @@ image_size = 96
 num_samples = 5
 epochs = 50
 
+label_encoder = LabelEncoder()
+label_encoder.fit(["baseball", "basketball", "billiard_ball", "bowling_ball", "cricket_ball", "football", "golf_ball", "hockey_ball", "table_tennis_ball", "tennis_ball", "volleyball"])
+
+label_map = {
+    0: "baseball",
+    1: "basketball",
+    2: "billiard_ball",
+    3: "bowling_ball",
+    4: "cricket_ball",
+    5: "football",
+    6: "golf_ball",
+    7: "hockey_ball",
+    8: "table_tennis_ball",
+    9: "tennis_ball",
+    10: "volleyball"
+}
 
 ### Image Functions ###
 
