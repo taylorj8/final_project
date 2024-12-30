@@ -138,9 +138,14 @@ def detect_circles(image: np.ndarray, max_circles = max_int, threshold = 100, sh
 def crop_to_circle(img: np.ndarray, circles: np.ndarray) -> np.ndarray:
     cropped_imgs = []
     if circles is not None:
-        for (x, y, r) in circles:
+        if type(circles[0]) == int:
+            x, y, r = circles
             cropped_img = img[y-r:y+r, x-r:x+r]
             cropped_imgs.append(cropped_img)
+        else:
+            for (x, y, r) in circles:
+                cropped_img = img[y-r:y+r, x-r:x+r]
+                cropped_imgs.append(cropped_img)
     return cropped_imgs
 
 
